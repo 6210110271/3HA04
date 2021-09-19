@@ -9,7 +9,7 @@ parameter base_limiter = 6_250_000;
 reg [29:0] limiter;
 
 reg [10:0] index = 0;
-reg [3:0] note = 0;
+reg [4:0] note = 0;
 reg [1:0] pitch = 0;
 reg [4:0] length = 0;
 reg [4:0] len = 0;
@@ -138,8 +138,8 @@ always @(*) begin
 			115: begin  note = 9;  pitch = 2;  length = 1;  end  //C5
 			116: begin  note = 6;  pitch = 2;  length = 2;  end  //A
 		   117: begin  note = 0;  pitch = 2;  length = 2;  end
-		  	118: begin  note = 1;  pitch = 2;  length = 2;  end  //C
-			119: begin  note = 5;  pitch = 2;  length = 2;  end  //G
+		  	118: begin  note = 1;  pitch = 2;  length = 2;  end  //C  end 1
+			119: begin  note = 5;  pitch = 2;  length = 2;  end  //G  end 1
 			120: begin  note = 4;  pitch = 2;  length = 1.5;  end  //F
 			121: begin  note = 3;  pitch = 2;  length = 1;  end  //E
 			122: begin  note = 2;  pitch = 2;  length = 1.5;  end  //D
@@ -182,14 +182,125 @@ always @(*) begin
 			159: begin  note = 9;  pitch = 2;  length = 1;  end  //C5
 			160: begin  note = 6;  pitch = 2;  length = 2;  end  //A
 		   161: begin  note = 0;  pitch = 2;  length = 2;  end	
-			162: begin  note = 2;  pitch = 2;  length = 1;  end  //D
+			162: begin  note = 1;  pitch = 2;  length = 2;  end  //C  end  2
+			163: begin  note = 5;  pitch = 2;  length = 2;  end  //G  end  2
+			164: begin  note = 4;  pitch = 2;  length = 1.5;  end  //F
+			165: begin  note = 3;  pitch = 2;  length = 1;  end  //E
+			166: begin  note = 2;  pitch = 2;  length = 1.5;  end  //D
+			167: begin  note = 1;  pitch = 2;  length = 1.5;  end  //C
+			168: begin  note = 2;  pitch = 2;  length = 1;  end  //D
+			169: begin  note = 3;  pitch = 2;  length = 1.5;  end  //E
+			170: begin  note = 2;  pitch = 2;  length = 1;  end  //D
+			171: begin  note = 4;  pitch = 2;  length = 1;  end  //F hook1
+			172: begin  note = 3;  pitch = 2;  length = 1;  end  //E
+			173: begin  note = 4;  pitch = 2;  length = 1;  end  //F
+			174: begin  note = 2;  pitch = 2;  length = 2;  end  //D
+			175: begin  note = 0;  pitch = 2;  length = 1;  end
+			176: begin  note = 2;  pitch = 2;  length = 2;  end  //D
+			177: begin  note = 3;  pitch = 2;  length = 1;  end  //E
+			178: begin  note = 4;  pitch = 2;  length = 1;  end  //F
+			179: begin  note = 9;  pitch = 2;  length = 1;  end  //C5
+			180: begin  note = 6;  pitch = 2;  length = 2;  end  //A
+		   181: begin  note = 0;  pitch = 2;  length = 2;  end	
+			182: begin  note = 2;  pitch = 2;  length = 1;  end  //D
+			183: begin  note = 4;  pitch = 2;  length = 1;  end  //F hook2
+			184: begin  note = 3;  pitch = 2;  length = 1;  end  //E
+			185: begin  note = 4;  pitch = 2;  length = 1;  end  //F
+			186: begin  note = 2;  pitch = 2;  length = 2;  end  //D
+			187: begin  note = 0;  pitch = 2;  length = 1;  end
+			188: begin  note = 2;  pitch = 2;  length = 2;  end  //D
+			189: begin  note = 3;  pitch = 2;  length = 1;  end  //E
+			190: begin  note = 4;  pitch = 2;  length = 1;  end  //F
+			191: begin  note = 9;  pitch = 2;  length = 1;  end  //C5
+			192: begin  note = 6;  pitch = 2;  length = 2;  end  //A
+		   193: begin  note = 0;  pitch = 2;  length = 2;  end	
+			194: begin  note = 2;  pitch = 2;  length = 1;  end  //D
+			195: begin  note = 4;  pitch = 2;  length = 1;  end  //F hook3
+			196: begin  note = 3;  pitch = 2;  length = 1;  end  //E
+			197: begin  note = 4;  pitch = 2;  length = 1;  end  //F
+			198: begin  note = 2;  pitch = 2;  length = 2;  end  //D
+			199: begin  note = 0;  pitch = 2;  length = 1;  end
+			200: begin  note = 2;  pitch = 2;  length = 2;  end  //D
+			201: begin  note = 3;  pitch = 2;  length = 1;  end  //E
+			202: begin  note = 4;  pitch = 2;  length = 1;  end  //F
+			203: begin  note = 9;  pitch = 2;  length = 1;  end  //C5
+			204: begin  note = 6;  pitch = 2;  length = 2;  end  //A
+		   205: begin  note = 0;  pitch = 2;  length = 2;  end
+		   206: begin  note = 12;  pitch = 2;  length = 2;  end //Db4
+		   207: begin  note = 5;  pitch = 2;  length = 2;  end  //G  end  3
+			208: begin  note = 4;  pitch = 2;  length = 1.5;  end  //F
+			209: begin  note = 3;  pitch = 2;  length = 1;  end  //E
+			210: begin  note = 2;  pitch = 2;  length = 1.5;  end  //D
+			211: begin  note = 12;  pitch = 2;  length = 1.5;  end  //Db4
+			212: begin  note = 2;  pitch = 2;  length = 1;  end  //D
+			213: begin  note = 3;  pitch = 2;  length = 1.5;  end  //E	  new end 1
+			214: begin  note = 10;  pitch = 2;  length = 10;  end  //D5
+		   215: begin  note = 6;  pitch = 2;  length = 2;  end  //A4
+	      216: begin  note = 9;  pitch = 2;  length = 2;  end  //C5
+	      217: begin  note = 10;  pitch = 2;  length = 5;  end  //D5
+	      218: begin  note = 14;  pitch = 2;  length = 1.5;  end  //F5
+	      219: begin  note = 15;  pitch = 2;  length = 1;  end  //G5
+	      220: begin  note = 14;  pitch = 2;  length = 1;  end  //F5
+	      221: begin  note = 13;  pitch = 2;  length = 0.5;  end  //Eb5
+	      222: begin  note = 11;  pitch = 2;  length = 2;  end  //E5
+	      223: begin  note = 14;  pitch = 2;  length = 1.5;  end  //F5
+	      224: begin  note = 10;  pitch = 2;  length = 5;  end  //D5
+	      225: begin  note = 0;  pitch = 2;  length = 1;  end  	
+	      226: begin  note = 6;  pitch = 2;  length = 2.5;  end  //A4
+         227: begin  note = 9;  pitch = 2;  length = 2;  end  //C5
+         228: begin  note = 11;  pitch = 2;  length = 1;  end  //E5
+         229: begin  note = 14;  pitch = 2;  length = 1.5;  end  //F5
+         230: begin  note = 11;  pitch = 2;  length = 5;  end  //E5
+         231: begin  note = 0;  pitch = 2;  length = 2;  end
+         232: begin  note = 10;  pitch = 2;  length = 3;  end  //D5
+         233: begin  note = 14;  pitch = 2;  length = 3;  end  //F5 
+         234: begin  note = 15;  pitch = 2;  length = 2;  end  //G5
+         235: begin  note = 16;  pitch = 2;  length = 8;  end  //A5 
+         236: begin  note = 0;  pitch = 2;  length = 4;  end 
+	      237: begin  note = 14;  pitch = 2;  length = 2;  end	//F5	
+         238: begin  note = 15;  pitch = 2;  length = 2;  end	//G5
+ 			239: begin  note = 16;  pitch = 2;  length = 4;  end	//A5
+			240: begin  note = 0;  pitch = 2;  length = 2;  end
+		   241: begin  note = 15;  pitch = 2;  length = 2;  end  //G5 ;; 
+         242: begin  note = 14;  pitch = 2;  length = 2;  end  //F5
+	      243: begin  note = 15;  pitch = 2;  length = 1;  end	//G5	
+         244: begin  note = 11;  pitch = 2;  length = 2;  end	//E5
+ 			245: begin  note = 0;  pitch = 2;  length = 1;  end	
+			246: begin  note = 9;  pitch = 2;  length = 2;  end	//C5
+		   247: begin  note = 10;  pitch = 2;  length = 8;  end	//D5
+		   248: begin  note = 0;  pitch = 2;  length = 4;  end
+		   249: begin  note = 14;  pitch = 2;  length = 2;  end  //F5		
+			250: begin  note = 15;  pitch = 2;  length = 2;  end  //G5
+			251: begin  note = 16;  pitch = 2;  length = 4;  end  //A5
+			252: begin  note = 0;  pitch = 2;  length = 2;  end  
+			253: begin  note = 17;  pitch = 2;  length = 0.5;  end //Fg5 
+			254: begin  note = 15;  pitch = 2;  length = 2;  end  //G5
+			255: begin  note = 0;  pitch = 2;  length = 1;  end 
+		   256: begin  note = 14;  pitch = 2;  length = 2;  end  //F5
+		   257: begin  note = 15;  pitch = 2;  length = 1;  end  //G5
+		   258: begin  note = 11;  pitch = 2;  length = 1;  end  //E5
+	      259: begin  note = 0;  pitch = 2;  length = 2;  end
+         260: begin  note = 19;  pitch = 2;  length = 2;  end  //C6    6
+         261: begin  note = 16;  pitch = 2;  length = 8;  end  //A5
+         262: begin  note = 0;  pitch = 2;  length = 4;  end
+         263: begin  note = 14;  pitch = 2;  length = 2;  end  //F5
+         264: begin  note = 15;  pitch = 2;  length = 2;  end  //G5
+         265: begin  note = 16;  pitch = 2;  length = 4;  end  //A5
+         266: begin  note = 0;  pitch = 2;  length = 2;  end
+         267: begin  note = 15;  pitch = 2;  length = 2;  end //G5
+         268: begin  note = 14;  pitch = 2;  length = 2;  end //F5
+         269: begin  note = 15;  pitch = 2;  length = 1;  end //G5
+         270: begin  note = 11;  pitch = 2;  length = 1;  end //E5
+         271: begin  note = 0;  pitch = 2;  length = 2;  end
+         272: begin  note = 9;  pitch = 2;  length = 2;  end // C5
+         273: begin  note = 10;  pitch = 2;  length = 14;  end // D5 ยาวมาก 			
 			default: begin note = 0;  pitch = 0;  length = 6; end
 		endcase
 	end
 end
 
 always @(posedge clk) begin
-	if (index >= 200) begin
+	if (index >= 280) begin
 		index = 0;
 	end else begin
 		
