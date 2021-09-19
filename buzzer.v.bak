@@ -1,0 +1,43 @@
+module buzzer(clk, pitch, note, buzz);
+
+input clk;
+input [2:0] note;
+input [1:0] pitch;
+output reg buzz;
+
+reg [25:0] limiter = 25_000_000;
+reg [25:0] counter = 0;
+
+always @(*) begin
+	
+	if (pitch == 0) begin
+		limiter = 0;
+	end else begin
+		case (note)
+			1: limiter = 25_000_000 / (262 * pitch); // C
+			2: limiter = 25_000_000 / (294 * pitch); // D
+			3: limiter = 25_000_000 / (330 * pitch); // E
+			4: limiter = 25_000_000 / (349 * pitch); // F
+			5: limiter = 25_000_000 / (392 * pitch); // G
+			6: limiter = 25_000_000 / (440 * pitch); // A
+			7: limiter = 25_000_000 / (494 * pitch); // B
+			default: limiter = 0;
+		endcase
+	end
+	
+end
+
+always @(posedge clk) begin
+	
+	counter = counter + 1;
+	if (counter >= limiter) begin
+		if (limiter > 0)
+			buzz = ~buzz;
+		else
+			buzz = 0;
+		counter = 0;
+	end
+	
+end
+
+endmodule

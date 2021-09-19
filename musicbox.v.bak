@@ -1,0 +1,64 @@
+module musicbox(clk, buzz, led);
+
+input clk;
+output buzz;
+output reg led;
+
+reg [25:0] counter = 0;
+parameter base_limiter = 6_250_000;
+reg [29:0] limiter;
+
+reg [3:0] index = 0;
+reg [2:0] note = 0;
+reg [1:0] pitch = 0;
+reg [4:0] length = 0;
+reg [4:0] len = 0;
+
+always @(*) begin
+	if (len >= length) begin
+		note = 0;
+		pitch = 0;
+	end else begin
+		case(index)
+			0: begin  note = 4;  pitch = 2;  length = 6;  end
+			1: begin  note = 5;  pitch = 2;  length = 6;  end
+			2: begin  note = 1;  pitch = 2;  length = 4;  end
+			3: begin  note = 5;  pitch = 2;  length = 6;  end
+			4: begin  note = 6;  pitch = 2;  length = 6;  end
+			5: begin  note = 7;  pitch = 2;  length = 1;  end
+			6: begin  note = 5;  pitch = 2;  length = 1;  end
+			7: begin  note = 3;  pitch = 2;  length = 2;  end
+			8: begin  note = 4;  pitch = 2;  length = 6;  end
+			9: begin  note = 5;  pitch = 2;  length = 6;  end
+			10: begin note = 1;  pitch = 2;  length = 14; end
+			11: begin note = 0;  pitch = 2;  length = 5;  end
+			12: begin note = 0;  pitch = 2;  length = 5;  end
+			default: begin note = 0;  pitch = 0;  length = 6; end
+		endcase
+	end
+end
+
+always @(posedge clk) begin
+	if (index >= 12) begin
+		index = 0;
+	end else begin
+		
+		counter = counter + 1;
+		if (counter >= base_limiter) begin
+			counter = 0;
+			len = len + 1;
+			led = 1;
+			if (len >= length) begin
+				len = 0;
+				index = index + 1;
+			end
+		end else if (counter >= base_limiter / 2) begin
+			led = 0;
+		end
+		
+	end
+end
+
+buzzer bz1(clk, pitch, note, buzz);
+
+endmodule
